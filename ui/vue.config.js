@@ -52,6 +52,9 @@ module.exports = {
       '/users': {
         target: 'http://127.0.0.1:5913'
       },
+      '/tenants': {
+        target: 'http://127.0.0.1:5913'
+      },
       '/bind': {
         target: 'http://127.0.0.1:5913'
       },

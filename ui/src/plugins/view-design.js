@@ -5,7 +5,10 @@ import zh from 'view-design/dist/locale/zh-CN'
 import {
     locale, Icon, Message, Card, Modal, Form, FormItem, Input, Button,
     Table, Tooltip, Select, Option, Dropdown, DropdownMenu, DropdownItem,
-    Progress, Tag, Upload
+    Progress, Tag, Upload,
+    MenuItem, Layout, Header, Sider,
+    Content, Footer, Menu,
+    Submenu, Avatar
 } from 'view-design'
 
 if (navigator.language === 'zh-CN')
@@ -17,12 +20,23 @@ Vue.prototype.$Message = Message
 Vue.prototype.$Modal = Modal
 
 Vue.component('Icon', Icon)
+Vue.component('Layout', Layout)
+Vue.component('Header', Header)
+Vue.component('Sider', Sider)
+Vue.component('Content', Content)
+Vue.component('Footer', Footer)
 Vue.component('Card', Card)
 Vue.component('Modal', Modal)
 Vue.component('Form', Form)
 Vue.component('FormItem', FormItem)
 Vue.component('Input', Input)
 Vue.component('Button', Button)
+Vue.component('MenuItem', MenuItem)
+Vue.component('Avatar', Avatar)
+// Vue.component('Paragraph', Paragraph)
+
+Vue.component('Submenu', Submenu)
+Vue.component('Menu', Menu)
 Vue.component('Table', Table)
 Vue.component('Tooltip', Tooltip)
 Vue.component('Select', Select)

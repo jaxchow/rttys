@@ -9,15 +9,6 @@
     </Tooltip>
     <div style="float: right; margin-right: 50px">
       <span style="margin-right: 20px; color: #3399ff; font-size: 24px">{{ $t('device-count', {count: devlists.filter(dev => dev.online).length}) }}</span>
-      <Dropdown @on-click="handleUserCommand">
-        <a href="javascript:void(0)">
-            <span style="color: #3399ff; font-size: 24px">{{ username }}</span>
-            <Icon type="ios-arrow-down"/>
-        </a>
-        <DropdownMenu slot="list">
-          <DropdownItem name="logout">{{ $t('Sign out') }}</DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
     </div>
     <Table :loading="loading" :columns="columnsDevices" :data="filteredDevices" style="margin-top: 10px; width: 100%" :no-data-text="$t('No devices connected')" @on-selection-change='handleSelection'>
       <template v-slot:connected="{ row }">
@@ -334,7 +325,7 @@ export default {
       }
 
       this.axios.post('/delete', {
-        devices: offlines.map(s => s.id)
+        devices: offlines.map(s => s.id).pop()
       }).then(() => {
         this.getDevices();
         this.$Message.success(this.$t('Delete success'));
