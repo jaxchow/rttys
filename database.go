@@ -11,8 +11,12 @@ import (
 	"database/sql"
 	"strings"
 
+	sqladapter "github.com/Blank-Xu/sql-adapter"
 	_ "github.com/go-sql-driver/mysql"
-	_ "modernc.org/sqlite"
+
+	"github.com/glebarez/sqlite"
+	_ "gorm.io/driver/sqlite"
+	"gorm.io/gorm"
 )
 
 func instanceDB(str string) (*sql.DB, error) {
@@ -22,4 +26,21 @@ func instanceDB(str string) (*sql.DB, error) {
 	} else {
 		return sql.Open("mysql", str)
 	}
+}
+
+func initGORM(str string) (*gorm.DB, error) {
+	sp := strings.Split(str, "://")
+	db, err := gorm.Open(sqlite.Open(sp[1]), &gorm.Config{})
+	if err != nil {
+		return nil, err
+	}
+	return db, nil
+}
+
+func CasbinAdapter(db *sql.DB) *sqladapter.Adapter {
+	a, err := sqladapter.NewAdapter(db, "sqlite3", "")
+	if err != nil {
+		panic(err)
+	}
+	return a
 }

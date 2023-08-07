@@ -57,7 +57,7 @@ func (resp *TenantRepository) Delete(value STenant) (int64, error) {
 }
 
 func (resp *TenantRepository) Update(entity STenant, where SPTelant) (int64, error) {
-	result := resp.db.Model(&STenant{}).Updates(entity).Where(where)
+	result := resp.db.Model(&STenant{}).Where(where).Updates(entity)
 	if result.Error != nil {
 		return 0, result.Error
 	}

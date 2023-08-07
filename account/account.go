@@ -7,11 +7,12 @@ type AccountRepository struct {
 }
 
 type SAccount struct {
-	Username string `json:"username",form:"username"`
-	Password string `json:"password",form:"password"`
-	Admin    int8   `json:"admin",form:"admin"`
-	Tenant   string `json:"tenant",form:"tenant"`
-	Token    string `json:"token",form:"token"`
+	Username    string `json:"username",form:"username"`
+	Password    string `json:"password",form:"password"`
+	Admin       int8   `json:"admin",form:"admin"`
+	Tenant      string `json:"tenant",form:"tenant"`
+	Token       string `json:"token",form:"token"`
+	Description string `json:"description,form:"description""`
 }
 
 type SPage struct {
@@ -59,7 +60,7 @@ func (resp *AccountRepository) Delete(value SAccount) (int64, error) {
 }
 
 func (resp *AccountRepository) Update(entity SAccount, where SPAccount) (int64, error) {
-	result := resp.db.Model(&SAccount{}).Updates(entity).Where(where)
+	result := resp.db.Model(&SAccount{}).Where(where.SAccount).Updates(entity)
 	if result.Error != nil {
 		return 0, result.Error
 	}

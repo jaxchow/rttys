@@ -27,12 +27,24 @@ func initDb(cfg *config.Config) error {
 		return err
 	}
 
-	_, err = db.Exec("CREATE TABLE IF NOT EXISTS account(username VARCHAR(512) PRIMARY KEY NOT NULL, password TEXT NOT NULL, admin INT NOT NULL)")
+	_, err = db.Exec("CREATE TABLE IF NOT EXISTS account(username VARCHAR(512) PRIMARY KEY NOT NULL, password TEXT NOT NULL, admin INT NULL,tenant varchar(512) NULL,token varchar(512) NOT NULL,description varchar(512)  NULL)")
+	_, err = db.Exec("INSERT INTO account (username, password, admin, tenant, token,description) VALUES('admin', 'admin', 1, NULL, '11','abc');")
 	if err != nil {
 		return err
 	}
 
-	_, err = db.Exec("CREATE TABLE IF NOT EXISTS device(id VARCHAR(512) PRIMARY KEY NOT NULL, description TEXT NOT NULL, online DATETIME NOT NULL, username TEXT NOT NULL)")
+	_, err = db.Exec("CREATE TABLE IF NOT EXISTS tenant(name varchar(512) PRIMARY KEY NOT NULL, owner varchar(512)  NULL,description TEXT NULL)")
+	// _, err = db.Exec("INSERT INTO tenant (name, owner, description) VALUES('telkits', 'jaxchow', '租户信息描述'); ")
+
+	if err != nil {
+		return err
+	}
+
+	_, err = db.Exec("CREATE TABLE IF NOT EXISTS device(id VARCHAR(512) PRIMARY KEY NOT NULL, description TEXT NOT NULL, online DATETIME NOT NULL, username TEXT NOT NULL,tenant text null)")
+
+	if err != nil {
+		return err
+	}
 
 	return err
 }
@@ -79,7 +91,7 @@ func runRttys(c *cli.Context) {
 }
 
 func main() {
-	defaultLogPath := "/var/log/rttys.log"
+	defaultLogPath := "./rttys.log"
 	if runtime.GOOS == "windows" {
 		defaultLogPath = "rttys.log"
 	}

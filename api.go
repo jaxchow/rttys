@@ -12,8 +12,10 @@ import (
 	"strings"
 	"time"
 
+	account "rttys/account"
 	"rttys/cache"
 	"rttys/config"
+	tenant "rttys/tenant"
 	"rttys/utils"
 
 	"github.com/gin-gonic/gin"
@@ -23,6 +25,18 @@ import (
 type credentials struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
+	Admin    int8   `json:"admin"`
+	Tenant   string `json:"tenant"`
+}
+
+type Telant struct {
+	Name        string `json:"name"`
+	Owner       string `json:"owner"`
+	Description string `json:"description"`
+}
+
+type SBatchTenants struct {
+	Tenants []string `json:"tenants"`
 }
 
 var httpSessions *cache.Cache
@@ -53,6 +67,26 @@ func httpLogin(cfg *config.Config, creds *credentials) bool {
 	db.QueryRow("SELECT COUNT(*) FROM account WHERE username = ? AND password = ?", creds.Username, creds.Password).Scan(&cnt)
 
 	return cnt != 0
+}
+
+func getUserTelnet(cfg *config.Config, creds *credentials) string {
+	if creds.Username == "" || creds.Password == "" {
+		return ""
+	}
+
+	db, err := instanceDB(cfg.DB)
+	if err != nil {
+		log.Error().Msg(err.Error())
+		// return false
+	}
+	defer db.Close()
+
+	cnt := ""
+
+	db.QueryRow("SELECT tenant FROM account WHERE username = ? AND password = ?", creds.Username, creds.Password).Scan(&cnt)
+
+	return cnt
+
 }
 
 func authorizedDev(devid string, cfg *config.Config) bool {
@@ -125,10 +159,16 @@ func apiStart(br *broker) {
 	httpSessions = cache.New(30*time.Minute, 5*time.Second)
 
 	gin.SetMode(gin.ReleaseMode)
-
+	gormDB, err := initGORM(cfg.DB)
+	if err != nil {
+		log.Err(err)
+	}
+	tenantRepo := tenant.NewTenantRepository(gormDB)
+	accountRepo := account.NewAccountRepository(gormDB)
 	r := gin.New()
-
 	r.Use(gin.Recovery())
+	// authz.NewAuthorizer(e)
+	// r.Use(authz.NewAuthorizer(e))
 
 	authorized := r.Group("/", func(c *gin.Context) {
 		devid := c.Param("devid")
@@ -139,6 +179,127 @@ func apiStart(br *broker) {
 		if !httpAuth(cfg, c) {
 			c.AbortWithStatus(http.StatusUnauthorized)
 		}
+	})
+
+	// authorized.GET("/roles", func(c *gin.Context) {
+	// 	roles := e.GetAllRoles()
+	// 	c.JSON(http.StatusOK, gin.H{"roles": roles})
+	// })
+
+	authorized.GET("/tenants", func(c *gin.Context) {
+		db, err := instanceDB(cfg.DB)
+		if err != nil {
+			log.Error().Msg(err.Error())
+			c.Status(http.StatusInternalServerError)
+			return
+		}
+		defer db.Close()
+		telants := tenantRepo.Query(tenant.SPTelant{})
+		c.JSON(http.StatusOK, gin.H{"telant": telants})
+	})
+
+	authorized.POST("/tenants", func(c *gin.Context) {
+
+		tens := tenant.STenant{}
+		if err := c.BindJSON(&tens); err != nil {
+			c.JSON(http.StatusOK, gin.H{"error": err.Error()})
+			return
+		}
+		id, err := tenantRepo.Create(tens)
+		if err != nil {
+			c.JSON(http.StatusOK, gin.H{"error": err.Error()})
+		}
+		c.JSON(http.StatusOK, gin.H{"id": id})
+	})
+
+	authorized.PUT("/tenants", func(c *gin.Context) {
+
+		tens := tenant.STenant{}
+		if err := c.BindJSON(&tens); err != nil {
+			c.JSON(http.StatusOK, gin.H{"error": err.Error()})
+			return
+		}
+		where := tenant.SPTelant{}
+		where.Name = tens.Name
+		id, err := tenantRepo.Update(tens, where)
+		if err != nil {
+			c.JSON(http.StatusOK, gin.H{"error": err.Error()})
+		}
+		c.JSON(http.StatusOK, gin.H{"id": id})
+	})
+
+	authorized.DELETE("/tenants/:name", func(c *gin.Context) {
+		db, err := instanceDB(cfg.DB)
+		if err != nil {
+			log.Error().Msg(err.Error())
+			c.Status(http.StatusInternalServerError)
+			return
+		}
+		defer db.Close()
+		name := c.Param("name")
+
+		id, err := tenantRepo.Delete(tenant.STenant{
+			Name: name,
+		})
+		if err != nil {
+			log.Err(err)
+		}
+		c.JSON(http.StatusOK, gin.H{"id": id})
+	})
+
+	authorized.GET("/tenants/users", func(c *gin.Context) {
+		tenant := c.GetHeader("tenant")
+		account := accountRepo.Query(account.SPAccount{
+			SAccount: account.SAccount{
+				Tenant: tenant,
+			},
+		})
+
+		c.JSON(http.StatusOK, gin.H{"users": account})
+	})
+
+	authorized.POST("/tenants/users", func(c *gin.Context) {
+		loginUser := account.SAccount{}
+		if err := c.BindJSON(&loginUser); err != nil {
+			c.JSON(http.StatusOK, gin.H{"error": err.Error()})
+			return
+		}
+		loginUser.Token = utils.GenUniqueID(loginUser.Password)
+		id, err := accountRepo.Create(loginUser)
+		if err != nil {
+			log.Err(err)
+		}
+		c.JSON(http.StatusOK, gin.H{"id": id})
+	})
+	authorized.PUT("/tenants/users", func(c *gin.Context) {
+		loginUser := account.SAccount{}
+		if err := c.BindJSON(&loginUser); err != nil {
+			c.JSON(http.StatusOK, gin.H{"error": err.Error()})
+			return
+		}
+		spa := account.SPAccount{}
+		spa.Username = loginUser.Username
+		spa.Tenant = loginUser.Tenant
+		id, err := accountRepo.Update(loginUser, spa)
+		if err != nil {
+			log.Err(err)
+		}
+		c.JSON(http.StatusOK, gin.H{"id": id})
+	})
+	authorized.DELETE("/tenants/users/:username", func(c *gin.Context) {
+		// tenant := c.GetHeader("tenant")
+		username := c.Param("username")
+
+		id, err := accountRepo.Delete(account.SAccount{
+			Username: username,
+		})
+		if err != nil {
+			// log.Err(err)
+			c.JSON(http.StatusOK, gin.H{"error": err.Error()})
+			return
+		}
+		// id, err := result.LastInsertId()
+		c.JSON(http.StatusOK, gin.H{"id": id})
 	})
 
 	authorized.GET("/fontsize", func(c *gin.Context) {
@@ -221,7 +382,7 @@ func apiStart(br *broker) {
 			Online      bool   `json:"online"`
 			Proto       uint8  `json:"proto"`
 		}
-
+		tenant := c.GetHeader("Tenant")
 		db, err := instanceDB(cfg.DB)
 		if err != nil {
 			log.Error().Msg(err.Error())
@@ -230,7 +391,7 @@ func apiStart(br *broker) {
 		}
 		defer db.Close()
 
-		sql := "SELECT id, description, username FROM device"
+		sql := "SELECT id, description, username,tenant FROM device where 1=1"
 
 		if cfg.LocalAuth || !isLocalRequest(c) {
 			username := getLoginUsername(c)
@@ -240,10 +401,13 @@ func apiStart(br *broker) {
 			}
 
 			if !isAdminUsername(cfg, username) {
-				sql += fmt.Sprintf(" WHERE username = '%s'", username)
+				sql += fmt.Sprintf(" and username = '%s'", username)
+			} else {
+
 			}
 		}
 
+		sql += fmt.Sprintf(" and tenant = '%s'", tenant)
 		devs := make([]DeviceInfo, 0)
 
 		rows, err := db.Query(sql)
@@ -257,8 +421,9 @@ func apiStart(br *broker) {
 			id := ""
 			desc := ""
 			username := ""
+			tenant := ""
 
-			err := rows.Scan(&id, &desc, &username)
+			err := rows.Scan(&id, &desc, &username, &tenant)
 			if err != nil {
 				log.Error().Msg(err.Error())
 				break
@@ -305,7 +470,6 @@ func apiStart(br *broker) {
 
 	r.POST("/signin", func(c *gin.Context) {
 		var creds credentials
-
 		err := c.BindJSON(&creds)
 		if err != nil {
 			c.Status(http.StatusBadRequest)
@@ -315,12 +479,13 @@ func apiStart(br *broker) {
 		if httpLogin(cfg, &creds) {
 			sid := utils.GenUniqueID("http")
 			httpSessions.Set(sid, creds.Username, 0)
-
+			tenant := getUserTelnet(cfg, &creds)
 			c.SetCookie("sid", sid, 0, "", "", false, true)
 
 			c.JSON(http.StatusOK, gin.H{
 				"sid":      sid,
 				"username": creds.Username,
+				"tenant":   tenant,
 			})
 			return
 		}
@@ -401,7 +566,9 @@ func apiStart(br *broker) {
 	r.GET("/users", func(c *gin.Context) {
 		loginUsername := getLoginUsername(c)
 		isAdmin := isAdminUsername(cfg, loginUsername)
-
+		telant := c.GetHeader("Telant")
+		username := c.Query("username")
+		var sqlBuilder strings.Builder
 		if cfg.LocalAuth || !isLocalRequest(c) {
 			if !isAdmin {
 				c.Status(http.StatusUnauthorized)
@@ -418,8 +585,15 @@ func apiStart(br *broker) {
 			return
 		}
 		defer db.Close()
-
-		rows, err := db.Query("SELECT username FROM account")
+		// String
+		sqlBuilder.WriteString("SELECT username FROM account where 1=1 ")
+		if telant != "" {
+			sqlBuilder.WriteString(fmt.Sprintf("and telant=%s ", telant))
+		}
+		if len(username) > 0 {
+			sqlBuilder.WriteString(fmt.Sprintf("and username='%s' ", username))
+		}
+		rows, err := db.Query(sqlBuilder.String())
 		if err != nil {
 			log.Error().Msg(err.Error())
 			c.Status(http.StatusInternalServerError)
