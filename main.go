@@ -74,11 +74,11 @@ func runRttys(c *cli.Context) {
 		log.Info().Msg("Build Time: " + version.BuildTime())
 	}
 
-	err := initDb(cfg)
-	if err != nil {
-		log.Error().Msg("Init database fail:" + err.Error())
-		return
-	}
+	// err := initDb(cfg)
+	// if err != nil {
+	// 	log.Error().Msg("Init database fail:" + err.Error())
+	// 	return
+	// }
 
 	br := newBroker(cfg)
 	go br.run()

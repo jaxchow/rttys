@@ -69,9 +69,9 @@ func httpLogin(cfg *config.Config, creds *credentials) bool {
 	return cnt != 0
 }
 
-func getUserTelnet(cfg *config.Config, creds *credentials) string {
+func getUserTelnet(cfg *config.Config, creds *credentials) (string, int) {
 	if creds.Username == "" || creds.Password == "" {
-		return ""
+		return "", 0
 	}
 
 	db, err := instanceDB(cfg.DB)
@@ -82,10 +82,11 @@ func getUserTelnet(cfg *config.Config, creds *credentials) string {
 	defer db.Close()
 
 	cnt := ""
+	admin := 0
 
-	db.QueryRow("SELECT tenant FROM account WHERE username = ? AND password = ?", creds.Username, creds.Password).Scan(&cnt)
+	db.QueryRow("SELECT tenant,admin FROM account WHERE username = ? AND password = ?", creds.Username, creds.Password).Scan(&cnt, &admin)
 
-	return cnt
+	return cnt, admin
 
 }
 
@@ -479,13 +480,14 @@ func apiStart(br *broker) {
 		if httpLogin(cfg, &creds) {
 			sid := utils.GenUniqueID("http")
 			httpSessions.Set(sid, creds.Username, 0)
-			tenant := getUserTelnet(cfg, &creds)
+			tenant, admin := getUserTelnet(cfg, &creds)
 			c.SetCookie("sid", sid, 0, "", "", false, true)
 
 			c.JSON(http.StatusOK, gin.H{
 				"sid":      sid,
 				"username": creds.Username,
 				"tenant":   tenant,
+				"admin":    admin,
 			})
 			return
 		}

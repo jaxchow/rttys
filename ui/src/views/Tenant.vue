@@ -3,10 +3,9 @@
     <Button style="margin-right: 4px;" type="primary" shape="circle" icon="ios-refresh" @click="handleRefresh" :disabled="loading">{{ $t('Refresh List') }}</Button>
     <Input style="margin-right: 4px;width:200px" v-model="filterString" search @input="handleSearch" :placeholder="$t('Please enter the filter key...')"/>
     <Button style="margin-right: 4px;" @click="showCmdForm" type="primary">创建租户</Button>
-    <Button v-if="isadmin" style="margin-right: 4px;"  type="primary">{{ $t('users') }}</Button>
-    <Table :loading="loading" :columns="columnsTenants" :data="userlists" style="margin-top: 10px; width: 100%" :no-data-text="$t('No Tenant')" @on-selection-change='handleSelection'>
+    <Table :loading="loading" :columns="columnsTenants" :data="filteredUser" style="margin-top: 10px; width: 100%" :no-data-text="$t('No Tenant')" @on-selection-change='handleSelection'>
       <template v-slot:action="{ row }">
-        <Button type="warning" size="small" style="vertical-align: bottom;" @click="editTenant(row)">{{ $t('Edit') }}</Button>
+        <Button size="small" style="vertical-align: bottom;" @click="editTenant(row)">{{ $t('Edit') }}</Button>
         <Button type="warning" size="small" style="vertical-align: bottom;" @click="deleteTenant(row)">{{ $t('Delete') }}</Button>
       </template>
     </Table>
@@ -88,7 +87,7 @@ export default {
     handleSearch() {
       this.filteredUser = this.userlists.filter((d) => {
         const filterString = this.filterString.toLowerCase();
-        return d.username.toLowerCase().indexOf(filterString) > -1;
+        return d.name.toLowerCase().indexOf(filterString) > -1;
       });
     },
     showCmdForm() {
@@ -134,11 +133,17 @@ export default {
       this.cmdModal = true;
     },
     deleteTenant(row) {
-       this.axios.delete(`/tenants/${row.name}`, {
-      }).then(() => {
-        this.getTenants();
-        this.$Message.success(this.$t('Delete success'));
-      });
+      this.$Modal.confirm({
+        content: '是否确认删除数据',
+        onCancel: () => {},
+        onOk: () => {
+          this.axios.delete(`/tenants/${row.name}`, {
+          }).then(() => {
+            this.getTenants();
+            this.$Message.success(this.$t('Delete success'));
+          });
+        }
+      })
     }
   },
   mounted() {

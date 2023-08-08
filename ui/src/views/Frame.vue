@@ -25,9 +25,9 @@
                     <Layout>
                         <Sider hide-trigger :style="{background: '#fff'}">
                             <Menu theme="light" width="auto" :open-names="['1']">
-                                <MenuItem name="1-1"><a href='/home'>设备管理</a></MenuItem>
-                                <MenuItem name="1-2"><a href='/tenant'>租户管理</a></MenuItem>
-                                <MenuItem name="1-3"><a href='/account'>用户管理</a></MenuItem>
+                                <MenuItem  name="1-1"><a href='/home'>设备管理</a></MenuItem>
+                                <MenuItem v-if="isadmin==2" name="1-2"><a href='/tenant'>租户管理</a></MenuItem>
+                                <MenuItem v-if="isadmin==1 || isadmin==2" name="1-3"><a href='/account'>用户管理</a></MenuItem>
                             </Menu>
                         </Sider>
                         <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
@@ -73,7 +73,7 @@
     data() {
       return {
         username: '',
-        isadmin: false
+        isadmin: 0
       }
     },
     methods: {
@@ -87,10 +87,11 @@
     },
     mounted() {
       this.username = sessionStorage.getItem('rttys-username') || '';
-
-      this.axios.get('/isadmin').then(res => {
-        this.isadmin = res.data.admin;
-      });
+      this.isadmin = sessionStorage.getItem('rttys-admin')
+      console.log(this.isadmin)
+      // this.axios.get('/isadmin').then(res => {
+      //   this.isadmin = res.data.admin;
+      // });
     }
   }
 </script>

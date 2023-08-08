@@ -3,7 +3,7 @@
     <Button style="margin-right: 4px;" type="primary" shape="circle" icon="ios-refresh" @click="handleRefresh" :disabled="loading">{{ $t('Refresh List') }}</Button>
     <Input style="margin-right: 4px;width:200px" v-model="filterString" search @input="handleSearch" :placeholder="$t('Please enter the filter key...')"/>
     <Button style="margin-right: 4px;" @click="showCmdForm" type="primary" :disabled="cmdStatus.execing > 0">{{ $t('Execute command') }}</Button>
-    <Button v-if="isadmin" style="margin-right: 4px;" @click="showBindForm" type="primary">{{ $t('Bind user') }}</Button>
+    <Button v-if="isadmin==1" style="margin-right: 4px;" @click="showBindForm" type="primary">{{ $t('Bind user') }}</Button>
     <Tooltip :content="$t('Delete offline devices')">
       <Button @click="deleteDevices" type="primary">{{ $t('Delete') }}</Button>
     </Tooltip>
@@ -18,7 +18,7 @@
         <span v-if="row.online">{{ row.uptime  | formatTime }}</span>
       </template>
       <template v-slot:action="{ row }">
-        <Button v-if="isadmin && row.bound" type="warning" size="small" style="vertical-align: bottom;" @click="unBindUser(row.id)">{{ $t('Unbind') }}</Button>
+        <Button v-if="isadmin==1 && row.bound" type="warning" size="small" style="vertical-align: bottom;" @click="unBindUser(row.id)">{{ $t('Unbind') }}</Button>
         <Tooltip v-if="row.online" placement="top" :content="$t('Access your device\'s Shell')">
           <i class="iconfont icon-shell" style="font-size: 40px; color: black; cursor:pointer;" @click="connectDevice(row.id)"/>
         </Tooltip>
@@ -497,10 +497,8 @@ export default {
   },
   mounted() {
     this.username = sessionStorage.getItem('rttys-username') || '';
+    this.isadmin = sessionStorage.getItem('rttys-admin') || '';
 
-    this.axios.get('/isadmin').then(res => {
-      this.isadmin = res.data.admin;
-    });
 
     this.getDevices();
   }

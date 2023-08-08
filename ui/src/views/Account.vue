@@ -2,19 +2,24 @@
   <div style="padding:5px;">
     <Button style="margin-right: 4px;" type="primary" shape="circle" icon="ios-refresh" @click="handleRefresh" :disabled="loading">{{ $t('Refresh List') }}</Button>
     <Input style="margin-right: 4px;width:200px" v-model="filterString" search @input="handleSearch" :placeholder="$t('Please enter the filter key...')"/>
-    <Button v-if="isadmin" style="margin-right: 4px;"  type="primary">{{ $t('users') }}</Button>
     <Button style="margin-right: 4px;" @click="showCmdForm" type="primary">添加用户</Button>
-    <Table :loading="loading" :columns="columnsUsers" :data="userlists" style="margin-top: 10px; width: 100%" :no-data-text="$t('No acounnt')" @on-selection-change='handleSelection'>
+    <Table :loading="loading" :columns="columnsUsers" :data="filteredUser" style="margin-top: 10px; width: 100%" :no-data-text="$t('No acounnt')" @on-selection-change='handleSelection'>
+      <template v-slot:admin="{ row }">
+        <span v-if="row.admin ==0">普通用户</span>
+        <span v-if="row.admin ==1">租户管理员</span>
+        <span v-if="row.admin ==2">超级管理员</span>
+      </template>
       <template v-slot:action="{ row }">
-        <Button type="warning" size="small" style="vertical-align: bottom;" @click="editUser(row)">{{ $t('Edit') }}</Button>
+        <Button size="small" style="vertical-align: bottom;" @click="editUser(row)">{{ $t('Edit') }}</Button>
         <Button type="warning" size="small" style="vertical-align: bottom;" @click="deleteUsers(row)">{{ $t('Delete') }}</Button>
       </template>
     </Table>
     <Modal v-model="cmdModal" title="添加用户" @on-ok="doCmd">
       <Form ref="cmdForm" :model="cmdData" :label-width="100" label-position="left">
-        <FormItem :label="$t('Role')" prop='admin'>
+        <FormItem :label="$t('Role')" prop='admin' >
           <Select v-model="cmdData.admin" style="width:200px">
-              <Option value=2 key=2>普通用户</Option>
+            <Option value=0 key=0>普通用户</Option>
+            <Option value=1 key=1>租户管理员</Option>
           </Select>
         </FormItem>
         <FormItem :label="$t('Username')" prop="username">
@@ -24,7 +29,7 @@
           <Input v-model="cmdData.password" type="password" password />
         </FormItem>
         <FormItem :label="$t('Tenant')" prop="tenant">
-          <Input v-model="cmdData.tenant" :disabled=true />
+          <Input v-model="cmdData.tenant" />
         </FormItem>
         <FormItem :label="$t('Description')" prop="description">
           <Input v-model.trim="cmdData.description"/>
@@ -40,7 +45,7 @@ export default {
   data() {
     return {
       username: '',
-      isadmin: false,
+      isadmin: 0,
       filterString: '',
       loading: true,
       userlists: [],
@@ -71,7 +76,8 @@ export default {
         },
         {
           title: this.$t('admin'),
-          key: 'admin',
+          // key: 'admin' ,
+          slot: 'admin',
           width: 200
         },
         {
@@ -135,14 +141,21 @@ export default {
       this.selection = selection;
     },
     deleteUsers(row) {
-      this.axios.delete(`/tenants/users/${row.username}`, {
-        // devices: offlines.map(s => s.id)
-      }).then(() => {
-        this.$Message.success(this.$t('Delete success'));
-        this.getUsers();
-      });
+      this.$Modal.confirm({
+        content: '是否确认删除数据',
+        onCancel: () => {},
+        onOk: () => {
+          this.axios.delete(`/tenants/users/${row.username}`, {
+            // devices: offlines.map(s => s.id)
+          }).then(() => {
+            this.$Message.success(this.$t('Delete success'));
+            this.getUsers();
+          });
+        }
+       })
     },
     doCmd() {
+      this.cmdData.admin = parseInt(this.cmdData.admin, 10)
       const data = this.cmdData
       if (this.cmdData.isModify === true) {
          this.axios.put('/tenants/users', data).then((response) => {
@@ -163,6 +176,7 @@ export default {
     }
   },
   mounted() {
+    this.isadmin = sessionStorage.getItem('rttys-admin')
     this.getUsers();
   }
 }

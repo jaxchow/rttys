@@ -24,10 +24,11 @@
     },
     mounted() {
       this.username = sessionStorage.getItem('rttys-username') || '';
+      this.isadmin = sessionStorage.getItem('rttys-admin')
 
-      this.axios.get('/isadmin').then(res => {
-        this.isadmin = res.data.admin;
-      });
+      // this.axios.get('/isadmin').then(res => {
+      //   this.isadmin = res.data.admin;
+      // });
     }
   }
 </script>

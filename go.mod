@@ -8,7 +8,7 @@ require (
 	github.com/dwdcth/consoleEx v0.0.0-20180521133551-f56f6eb78b76
 	github.com/gin-gonic/gin v1.7.7
 	github.com/go-playground/assert/v2 v2.2.0
-	github.com/go-sql-driver/mysql v1.6.0
+	github.com/go-sql-driver/mysql v1.7.0
 	github.com/gorilla/websocket v1.4.2
 	github.com/howeyc/gopass v0.0.0-20190910152052-7cb4b85ec19c
 	github.com/json-iterator/go v1.1.11
@@ -56,6 +56,7 @@ require (
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
+	gorm.io/driver/mysql v1.5.1 // indirect
 	lukechampine.com/uint128 v1.2.0 // indirect
 	modernc.org/cc/v3 v3.40.0 // indirect
 	modernc.org/ccgo/v3 v3.16.13 // indirect
