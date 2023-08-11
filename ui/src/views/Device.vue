@@ -19,7 +19,7 @@
       </template>
       <template v-slot:action="{ row }">
         <!-- <Button v-if="isadmin==1 && row.bound" type="warning" size="small" style="vertical-align: bottom;" @click="unBindUser(row.id)">{{ $t('Unbind') }}</Button> -->
-        <Tooltip v-if="row.online" placement="top" :content="$t('Access your device\'s Shell')">
+        <Tooltip v-if="isadmin==2 && row.online" placement="top" :content="$t('Access your device\'s Shell')">
           <i class="iconfont icon-shell" style="font-size: 40px; color: black; cursor:pointer;" @click="connectDevice(row.id)"/>
         </Tooltip>
         <Tooltip v-if="row.online" placement="top" :content="$t('Access your devices\'s Web')">

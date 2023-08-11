@@ -11,7 +11,7 @@
         </Col>
         <Col span="18" >
             <div v-if="admin==0">普通用户</div>
-            <div v-if="admin==1">租户管理员</div>
+            <div v-if="admin==1">管理员</div>
             <div v-if="admin==2">超级管理员</div>
         </Col>
         <Col span="6">

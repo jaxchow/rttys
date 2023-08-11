@@ -157,7 +157,7 @@ func (dev *device) UpdateDb() {
 	tenant := ""
 	account := ""
 	company := ""
-	db.QueryRow("SELECT tenant,account,company FROM  account where  token = ?", dev.token).Scan(&tenant, &account, &company)
+	db.QueryRow("SELECT tenant,username,company FROM  account where  token = ?", dev.token).Scan(&tenant, &account, &company)
 	if tenant != "" {
 		if cnt == 0 {
 			_, err = db.Exec("INSERT INTO device values(?,?,?,?,?,?)", dev.id, dev.desc, time.Now(), account, tenant, company)

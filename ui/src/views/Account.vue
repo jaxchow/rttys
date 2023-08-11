@@ -6,7 +6,7 @@
     <Table :loading="loading" :columns="columnsUsers" :data="filteredUser" style="margin-top: 10px; width: 100%" :no-data-text="$t('No acounnt')" @on-selection-change='handleSelection'>
       <template v-slot:admin="{ row }">
         <span v-if="row.admin ==0">普通用户</span>
-        <span v-if="row.admin ==1">租户管理员</span>
+        <span v-if="row.admin ==1">管理员</span>
         <span v-if="row.admin ==2">超级管理员</span>
       </template>
       <template v-slot:action="{ row }">
@@ -19,7 +19,7 @@
         <FormItem :label="$t('Role')" prop='admin' >
           <Select v-model="cmdData.admin" style="width:200px">
             <Option value=0 key=0>普通用户</Option>
-            <Option value=1 key=1>租户管理员</Option>
+            <Option value=1 key=1>管理员</Option>
           </Select>
         </FormItem>
         <FormItem :label="$t('Username')" prop="username">
