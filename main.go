@@ -79,6 +79,10 @@ func runRttys(c *cli.Context) {
 	// 	log.Error().Msg("Init database fail:" + err.Error())
 	// 	return
 	// }
+	log.Info().Msg("cfg db:" + cfg.DB)
+	log.Info().Msg("cfg token:" + cfg.Token)
+	log.Info().Msg("cfg AddrDev:" + cfg.AddrDev)
+	log.Info().Msg("cfg AddrUser:" + cfg.AddrUser)
 
 	br := newBroker(cfg)
 	go br.run()

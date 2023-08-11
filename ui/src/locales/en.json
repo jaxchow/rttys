@@ -69,5 +69,16 @@
   "Invalid address": "Invalid address",
   "Already copied to clipboard": "Already copied to clipboard",
   "Please use shortcut \"Shift+Insert\"": "Please use shortcut \"Shift+Insert\"",
-  "Your device's rtty does not support https proxy, please upgrade it.": "Your device's rtty does not support https proxy, please upgrade it."
+  "Your device's rtty does not support https proxy, please upgrade it.": "Your device's rtty does not support https proxy, please upgrade it.",
+  "Are you sure":"Are you sure",
+  "Company":"Company",
+  "Tenant":"Tenant",
+  "Create": "Create",
+  "Admin":"Role",
+  "Token":"Token",
+  "Other":"Other",
+  "My Menu":"My",
+  "Device Menu":"Device",
+  "Tenant Menu":"Tenant",
+  "Account Menu":"Account"
 }

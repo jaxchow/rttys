@@ -1,0 +1,389 @@
+2023-08-07T15:53:02+08:00 |INFO| main.go:61 |Go Version: go1.19.4
+2023-08-07T15:53:02+08:00 |INFO| main.go:62 |Go OS/Arch: darwin/arm64
+2023-08-07T15:53:02+08:00 |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-07T15:53:02+08:00 |ERROR| main.go:79 |Init database fail:constraint failed: UNIQUE constraint failed: account.username (1555)
+2023-08-07T15:56:53+08:00 |INFO| main.go:61 |Go Version: go1.19.4
+2023-08-07T15:56:53+08:00 |INFO| main.go:62 |Go OS/Arch: darwin/arm64
+2023-08-07T15:56:53+08:00 |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-07T15:56:53+08:00 |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-07T15:56:53+08:00 |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-07T15:56:53+08:00 |INFO| http.go:235 |Listen http proxy on: [::]:58053
+2023-08-07T15:56:53+08:00 |INFO| api.go:802 |Listen user on: :5913 SSL off
+2023-08-07T07:58:32Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-07T07:58:32Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-07T07:58:32Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-07T07:58:32Z |ERROR| main.go:79 |Init database fail:constraint failed: UNIQUE constraint failed: account.username (1555)
+2023-08-07T07:58:46Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-07T07:58:46Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-07T07:58:46Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-07T07:58:46Z |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-07T07:58:46Z |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-07T07:58:46Z |INFO| http.go:235 |Listen http proxy on: [::]:37023
+2023-08-07T07:58:46Z |INFO| api.go:802 |Listen user on: :5913 SSL off
+2023-08-07T08:12:50Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-07T08:12:50Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-07T08:12:50Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-07T08:12:50Z |ERROR| main.go:79 |Init database fail:default addr for network '192.168.11.208' unknown
+2023-08-07T08:13:40Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-07T08:13:40Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-07T08:13:40Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-07T08:13:40Z |ERROR| main.go:79 |Init database fail:default addr for network '192.168.11.208:3306' unknown
+2023-08-07T09:48:45Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-07T09:48:45Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-07T09:48:45Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-07T09:48:45Z |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-07T09:48:45Z |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-07T09:48:45Z |INFO| http.go:235 |Listen http proxy on: [::]:44831
+2023-08-07T09:48:45Z |INFO| api.go:802 |Listen user on: :5913 SSL off
+2023-08-08T02:33:31Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-08T02:33:31Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-08T02:33:31Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T02:33:31Z |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-08T02:33:31Z |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T02:33:31Z |INFO| http.go:235 |Listen http proxy on: [::]:38393
+2023-08-08T02:33:31Z |INFO| api.go:802 |Listen user on: :5913 SSL off
+2023-08-08T02:47:00Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-08T02:47:00Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-08T02:47:00Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T02:47:00Z |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-08T02:47:00Z |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T02:47:00Z |INFO| http.go:235 |Listen http proxy on: [::]:34373
+2023-08-08T02:47:00Z |INFO| api.go:804 |Listen user on: :5913 SSL off
+2023-08-08T02:54:33Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-08T02:54:33Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-08T02:54:33Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T02:54:33Z |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-08T02:54:33Z |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T02:54:33Z |INFO| http.go:235 |Listen http proxy on: [::]:34443
+2023-08-08T02:54:33Z |INFO| api.go:804 |Listen user on: :5913 SSL off
+2023-08-08T02:58:04Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-08T02:58:04Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-08T02:58:04Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T02:58:04Z |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-08T02:58:04Z |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T02:58:04Z |INFO| http.go:235 |Listen http proxy on: [::]:41513
+2023-08-08T02:58:04Z |INFO| api.go:804 |Listen user on: :5913 SSL off
+2023-08-08T03:00:53Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-08T03:00:53Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-08T03:00:53Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T03:00:53Z |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-08T03:00:53Z |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T03:00:53Z |INFO| http.go:235 |Listen http proxy on: [::]:44691
+2023-08-08T03:00:53Z |INFO| api.go:804 |Listen user on: :5913 SSL off
+2023-08-08T03:03:30Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-08T03:03:30Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-08T03:03:30Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T03:03:30Z |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-08T03:03:30Z |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T03:03:30Z |INFO| http.go:235 |Listen http proxy on: [::]:34677
+2023-08-08T03:03:30Z |INFO| api.go:804 |Listen user on: :5913 SSL off
+2023-08-08T09:47:59Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-08T09:47:59Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-08T09:47:59Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T09:47:59Z |INFO| main.go:82 |cfg db:mysql://root:password@tcp(192.168.11.208)/rttys
+2023-08-08T09:47:59Z |INFO| main.go:83 |cfg token:
+2023-08-08T09:47:59Z |INFO| main.go:84 |cfg AddrDev::5912
+2023-08-08T09:47:59Z |INFO| main.go:85 |cfg AddrUser::5913
+2023-08-08T09:47:59Z |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-08T09:47:59Z |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T09:47:59Z |INFO| http.go:235 |Listen http proxy on: [::]:44381
+2023-08-08T09:48:16Z |INFO| api.go:804 |Listen user on: :5913 SSL off
+2023-08-08T19:38:37+08:00 |INFO| main.go:61 |Go Version: go1.19.4
+2023-08-08T19:38:37+08:00 |INFO| main.go:62 |Go OS/Arch: darwin/arm64
+2023-08-08T19:38:37+08:00 |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T19:38:37+08:00 |INFO| main.go:82 |cfg db:mysql://root:password@tcp(192.168.8.160)/rttys
+2023-08-08T19:38:37+08:00 |INFO| main.go:83 |cfg token:
+2023-08-08T19:38:37+08:00 |INFO| main.go:84 |cfg AddrDev::5912
+2023-08-08T19:38:37+08:00 |INFO| main.go:85 |cfg AddrUser::5913
+2023-08-08T19:38:37+08:00 |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-08T19:38:37+08:00 |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T19:38:37+08:00 |INFO| http.go:235 |Listen http proxy on: [::]:56600
+2023-08-08T19:38:37+08:00 |INFO| api.go:804 |Listen user on: :5913 SSL off
+2023-08-08T19:38:42+08:00 |DEBUG| device.go:405 |Device '192.168.8.155:46020' connected
+2023-08-08T19:38:43+08:00 |INFO| broker.go:94 |Device 'XR20221101204400' registered, proto 3
+2023-08-08T19:40:52+08:00 |DEBUG| device.go:140 |Device '192.168.8.155:46020' disconnected
+2023-08-08T19:40:52+08:00 |INFO| broker.go:150 |Device 'XR20221101204400' unregistered
+2023-08-08T19:40:52+08:00 |INFO| broker.go:150 |Device 'XR20221101204400' unregistered
+2023-08-08T19:41:07+08:00 |DEBUG| device.go:405 |Device '192.168.8.155:53312' connected
+2023-08-08T19:41:37+08:00 |ERROR| 2023-08-08T19:41:37+08:00 |device.go:335 |DEBUG| Inactive device in long time: XR20221101204400device.go:405 |
+Device '192.168.8.155:54538' connected
+2023-08-08T19:41:43+08:00 |ERROR| device.go:335 |Inactive device in long time: XR20221101204400
+2023-08-08T19:41:43+08:00 |ERROR| device.go:335 |Inactive device in long time: XR20221101204400
+2023-08-08T19:41:43+08:00 |ERROR| device.go:337 |Inactive 3 times, now kill it: XR20221101204400
+2023-08-08T19:43:01+08:00 |INFO| main.go:61 |Go Version: go1.19.4
+2023-08-08T19:43:01+08:00 |INFO| main.go:62 |Go OS/Arch: darwin/arm64
+2023-08-08T19:43:01+08:00 |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T19:43:01+08:00 |INFO| main.go:82 |cfg db:mysql://root:password@tcp(192.168.8.160)/rttys
+2023-08-08T19:43:01+08:00 |INFO| main.go:83 |cfg token:
+2023-08-08T19:43:01+08:00 |INFO| main.go:84 |cfg AddrDev::5912
+2023-08-08T19:43:01+08:00 |INFO| main.go:85 |cfg AddrUser::5913
+2023-08-08T19:43:06+08:00 |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-08T19:43:06+08:00 |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T19:43:06+08:00 |INFO| http.go:235 |Listen http proxy on: [::]:58571
+2023-08-08T19:43:06+08:00 |INFO| api.go:804 |Listen user on: :5913 SSL off
+2023-08-08T19:43:13+08:00 |DEBUG| device.go:405 |Device '192.168.8.155:53334' connected
+2023-08-08T19:43:53+08:00 |INFO| main.go:61 |Go Version: go1.19.4
+2023-08-08T19:43:53+08:00 |INFO| main.go:62 |Go OS/Arch: darwin/arm64
+2023-08-08T19:43:53+08:00 |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T19:43:53+08:00 |INFO| main.go:82 |cfg db:mysql://root:password@tcp(192.168.8.160)/rttys
+2023-08-08T19:43:53+08:00 |INFO| main.go:83 |cfg token:
+2023-08-08T19:43:53+08:00 |INFO| main.go:84 |cfg AddrDev::5912
+2023-08-08T19:43:53+08:00 |INFO| main.go:85 |cfg AddrUser::5913
+2023-08-08T19:43:55+08:00 |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-08T19:43:55+08:00 |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T19:43:55+08:00 |INFO| http.go:235 |Listen http proxy on: [::]:58939
+2023-08-08T19:43:55+08:00 |INFO| api.go:804 |Listen user on: :5913 SSL off
+2023-08-08T19:44:01+08:00 |DEBUG| device.go:405 |Device '192.168.8.155:52460' connected
+2023-08-08T19:44:18+08:00 |INFO| broker.go:94 |Device 'XR20221101204400' registered, proto 3
+2023-08-08T19:44:44+08:00 |INFO| broker.go:123 |New session: b2f07e51a60aec8e758fde489f7b8fc3
+2023-08-08T19:45:44+08:00 |INFO| broker.go:187 |Delete session: b2f07e51a60aec8e758fde489f7b8fc3
+2023-08-08T12:01:50Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-08T12:01:50Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-08T12:01:50Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T12:01:50Z |INFO| main.go:82 |cfg db:mysql://root:password@tcp(192.168.8.160)/rttys
+2023-08-08T12:01:50Z |INFO| main.go:83 |cfg token:
+2023-08-08T12:01:50Z |INFO| main.go:84 |cfg AddrDev::5912
+2023-08-08T12:01:50Z |INFO| main.go:85 |cfg AddrUser::5913
+2023-08-08T12:01:50Z |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-08T12:01:50Z |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T12:01:50Z |INFO| http.go:235 |Listen http proxy on: [::]:38341
+2023-08-08T12:01:54Z |INFO| api.go:804 |Listen user on: :5913 SSL off
+2023-08-08T12:03:08Z |ERROR| api.go:428 |sql: Scan error on column index 3, name "tenant": converting NULL to string is unsupported
+2023-08-08T12:03:12Z |ERROR| api.go:428 |sql: Scan error on column index 3, name "tenant": converting NULL to string is unsupported
+2023-08-08T12:07:40Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-08T12:07:40Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-08T12:07:40Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T12:07:40Z |INFO| main.go:82 |cfg db:mysql://root:password@tcp(192.168.8.160)/rttys
+2023-08-08T12:07:40Z |INFO| main.go:83 |cfg token:
+2023-08-08T12:07:40Z |INFO| main.go:84 |cfg AddrDev::5912
+2023-08-08T12:07:40Z |INFO| main.go:85 |cfg AddrUser::5913
+2023-08-08T12:07:40Z |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-08T12:07:40Z |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T12:07:40Z |INFO| http.go:235 |Listen http proxy on: [::]:41569
+2023-08-08T12:07:40Z |INFO| api.go:804 |Listen user on: :5913 SSL off
+2023-08-08T12:08:04Z |DEBUG| device.go:405 |Device '127.0.0.1:47378' connected
+2023-08-08T12:08:04Z |DEBUG| device.go:405 |Device '127.0.0.1:47382' connected
+2023-08-08T12:08:04Z |ERROR| device.go:216 |invalid msg type: 71
+2023-08-08T12:08:04Z |DEBUG| device.go:140 |Device '127.0.0.1:47382' disconnected
+2023-08-08T12:08:04Z |ERROR| device.go:216 |invalid msg type: 71
+2023-08-08T12:08:04Z |DEBUG| device.go:140 |Device '127.0.0.1:47378' disconnected
+2023-08-08T12:08:05Z |DEBUG| device.go:405 |Device '127.0.0.1:47386' connected
+2023-08-08T12:08:05Z |ERROR| device.go:216 |invalid msg type: 71
+2023-08-08T12:08:05Z |DEBUG| device.go:140 |Device '127.0.0.1:47386' disconnected
+2023-08-08T12:08:06Z |DEBUG| device.go:405 |Device '127.0.0.1:47390' connected
+2023-08-08T12:08:06Z |ERROR| device.go:216 |invalid msg type: 71
+2023-08-08T12:08:06Z |DEBUG| device.go:140 |Device '127.0.0.1:47390' disconnected
+2023-08-08T12:08:06Z |DEBUG| device.go:405 |Device '127.0.0.1:47394' connected
+2023-08-08T12:08:14Z |DEBUG| device.go:140 |Device '127.0.0.1:47394' disconnected
+2023-08-08T12:08:15Z |ERROR| api.go:428 |sql: Scan error on column index 3, name "tenant": converting NULL to string is unsupported
+2023-08-08T12:08:28Z |ERROR| api.go:428 |sql: Scan error on column index 3, name "tenant": converting NULL to string is unsupported
+2023-08-08T12:10:57Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-08T12:10:57Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-08T12:10:57Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T12:10:57Z |INFO| main.go:82 |cfg db:mysql://root:password@tcp(192.168.8.160)/rttys
+2023-08-08T12:10:57Z |INFO| main.go:83 |cfg token:
+2023-08-08T12:10:57Z |INFO| main.go:84 |cfg AddrDev::5912
+2023-08-08T12:10:57Z |INFO| main.go:85 |cfg AddrUser::5913
+2023-08-08T12:10:57Z |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-08T12:10:57Z |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T12:10:57Z |INFO| http.go:235 |Listen http proxy on: [::]:38671
+2023-08-08T12:10:57Z |INFO| api.go:804 |Listen user on: :5913 SSL off
+2023-08-08T12:12:48Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-08T12:12:48Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-08T12:12:48Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T12:12:48Z |INFO| main.go:82 |cfg db:mysql://root:password@tcp(192.168.8.160)/rttys
+2023-08-08T12:12:48Z |INFO| main.go:83 |cfg token:
+2023-08-08T12:12:48Z |INFO| main.go:84 |cfg AddrDev::5912
+2023-08-08T12:12:48Z |INFO| main.go:85 |cfg AddrUser::5913
+2023-08-08T12:12:48Z |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-08T12:12:48Z |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T12:12:48Z |INFO| http.go:235 |Listen http proxy on: [::]:36249
+2023-08-08T12:12:48Z |INFO| api.go:804 |Listen user on: :5913 SSL off
+2023-08-08T20:19:08+08:00 |INFO| main.go:61 |Go Version: go1.19.4
+2023-08-08T20:19:08+08:00 |INFO| main.go:62 |Go OS/Arch: darwin/arm64
+2023-08-08T20:19:08+08:00 |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T20:19:08+08:00 |INFO| main.go:82 |cfg db:mysql://root:password@tcp(192.168.8.160)/rttys
+2023-08-08T20:19:08+08:00 |INFO| main.go:83 |cfg token:
+2023-08-08T20:19:08+08:00 |INFO| main.go:84 |cfg AddrDev::5912
+2023-08-08T20:19:08+08:00 |INFO| main.go:85 |cfg AddrUser::5913
+2023-08-08T20:19:12+08:00 |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-08T20:19:12+08:00 |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T20:19:12+08:00 |INFO| http.go:235 |Listen http proxy on: [::]:51873
+2023-08-08T20:19:12+08:00 |INFO| api.go:804 |Listen user on: :5913 SSL off
+2023-08-08T20:19:12+08:00 |DEBUG| device.go:405 |Device '192.168.8.155:39962' connected
+2023-08-08T20:19:24+08:00 |INFO| broker.go:94 |Device 'XR20221101204400' registered, proto 3
+2023-08-08T20:20:13+08:00 |INFO| main.go:61 |Go Version: go1.19.4
+2023-08-08T20:20:13+08:00 |INFO| main.go:62 |Go OS/Arch: darwin/arm64
+2023-08-08T20:20:13+08:00 |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T20:20:13+08:00 |INFO| main.go:82 |cfg db:mysql://root:password@tcp(192.168.8.160)/rttys
+2023-08-08T20:20:13+08:00 |INFO| main.go:83 |cfg token:
+2023-08-08T20:20:13+08:00 |INFO| main.go:84 |cfg AddrDev::5912
+2023-08-08T20:20:13+08:00 |INFO| main.go:85 |cfg AddrUser::5913
+2023-08-08T20:20:13+08:00 |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-08T20:20:13+08:00 |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T20:20:13+08:00 |INFO| http.go:235 |Listen http proxy on: [::]:52353
+2023-08-08T20:20:13+08:00 |INFO| api.go:804 |Listen user on: :5913 SSL off
+2023-08-08T20:20:16+08:00 |DEBUG| device.go:405 |Device '192.168.8.155:59454' connected
+2023-08-08T20:20:16+08:00 |INFO| broker.go:94 |Device 'XR20221101204400' registered, proto 3
+2023-08-08T20:21:12+08:00 |INFO| main.go:61 |Go Version: go1.19.4
+2023-08-08T20:21:12+08:00 |INFO| main.go:62 |Go OS/Arch: darwin/arm64
+2023-08-08T20:21:12+08:00 |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T20:21:12+08:00 |INFO| main.go:82 |cfg db:mysql://root:password@tcp(192.168.8.160)/rttys
+2023-08-08T20:21:12+08:00 |INFO| main.go:83 |cfg token:
+2023-08-08T20:21:12+08:00 |INFO| main.go:84 |cfg AddrDev::5912
+2023-08-08T20:21:12+08:00 |INFO| main.go:85 |cfg AddrUser::5913
+2023-08-08T20:21:12+08:00 |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-08T20:21:12+08:00 |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T20:21:12+08:00 |INFO| http.go:235 |Listen http proxy on: [::]:52806
+2023-08-08T20:21:12+08:00 |INFO| api.go:804 |Listen user on: :5913 SSL off
+2023-08-08T20:21:13+08:00 |DEBUG| device.go:405 |Device '192.168.8.155:40064' connected
+2023-08-08T20:21:13+08:00 |INFO| broker.go:94 |Device 'XR20221101204400' registered, proto 3
+2023-08-08T20:27:41+08:00 |INFO| main.go:61 |Go Version: go1.19.4
+2023-08-08T20:27:41+08:00 |INFO| main.go:62 |Go OS/Arch: darwin/arm64
+2023-08-08T20:27:41+08:00 |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T20:27:41+08:00 |INFO| main.go:82 |cfg db:mysql://root:password@tcp(192.168.8.160)/rttys
+2023-08-08T20:27:41+08:00 |INFO| main.go:83 |cfg token:
+2023-08-08T20:27:41+08:00 |INFO| main.go:84 |cfg AddrDev::5912
+2023-08-08T20:27:41+08:00 |INFO| main.go:85 |cfg AddrUser::5913
+2023-08-08T20:27:41+08:00 |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-08T20:27:41+08:00 |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T20:27:41+08:00 |INFO| http.go:235 |Listen http proxy on: [::]:55666
+2023-08-08T20:27:41+08:00 |INFO| api.go:810 |Listen user on: :5913 SSL off
+2023-08-08T20:27:42+08:00 |DEBUG| device.go:405 |Device '192.168.8.155:59862' connected
+2023-08-08T20:27:42+08:00 |INFO| broker.go:94 |Device 'XR20221101204400' registered, proto 3
+2023-08-08T20:28:22+08:00 |INFO| main.go:61 |Go Version: go1.19.4
+2023-08-08T20:28:22+08:00 |INFO| main.go:62 |Go OS/Arch: darwin/arm64
+2023-08-08T20:28:22+08:00 |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T20:28:22+08:00 |INFO| main.go:82 |cfg db:mysql://root:password@tcp(192.168.8.160)/rttys
+2023-08-08T20:28:22+08:00 |INFO| main.go:83 |cfg token:
+2023-08-08T20:28:22+08:00 |INFO| main.go:84 |cfg AddrDev::5912
+2023-08-08T20:28:22+08:00 |INFO| main.go:85 |cfg AddrUser::5913
+2023-08-08T20:28:22+08:00 |INFO| device.go:392 |Listen device on: :5912 SSL off
+2023-08-08T20:28:22+08:00 |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T20:28:22+08:00 |INFO| http.go:235 |Listen http proxy on: [::]:55997
+2023-08-08T20:28:22+08:00 |INFO| api.go:810 |Listen user on: :5913 SSL off
+2023-08-08T20:28:24+08:00 |DEBUG| device.go:405 |Device '192.168.8.155:48674' connected
+2023-08-08T20:28:24+08:00 |INFO| broker.go:94 |Device 'XR20221101204400' registered, proto 3
+2023-08-08T20:29:59+08:00 |ERROR| device.go:335 |Inactive device in long time: XR20221101204400
+2023-08-08T20:31:59+08:00 |INFO| broker.go:123 |New session: a8b12de0234fbd2c420780f6b46a5637
+2023-08-08T20:32:47+08:00 |INFO| broker.go:187 |Delete session: a8b12de0234fbd2c420780f6b46a5637
+2023-08-08T20:39:39+08:00 |DEBUG| device.go:140 |Device '192.168.8.155:48674' disconnected
+2023-08-08T20:39:39+08:00 |INFO| broker.go:150 |Device 'XR20221101204400' unregistered
+2023-08-08T20:39:39+08:00 |INFO| broker.go:150 |Device 'XR20221101204400' unregistered
+2023-08-08T20:39:39+08:00 |DEBUG| device.go:405 |Device '192.168.8.155:44158' connected
+2023-08-08T20:39:39+08:00 |INFO| broker.go:94 |Device 'XR20221101204400' registered, proto 3
+2023-08-08T20:45:05+08:00 |ERROR| device.go:335 |Inactive device in long time: XR20221101204400
+2023-08-08T20:45:29+08:00 |ERROR| device.go:335 |Inactive device in long time: XR20221101204400
+2023-08-08T20:46:36+08:00 |ERROR| device.go:335 |Inactive device in long time: XR20221101204400
+2023-08-08T20:46:36+08:00 |ERROR| device.go:337 |Inactive 3 times, now kill it: XR20221101204400
+2023-08-08T20:46:36+08:00 |DEBUG| device.go:140 |Device '192.168.8.155:44158' disconnected
+2023-08-08T20:46:36+08:00 |INFO| broker.go:150 |Device 'XR20221101204400' unregistered
+2023-08-08T20:46:36+08:00 |INFO| broker.go:150 |Device 'XR20221101204400' unregistered
+2023-08-08T20:46:42+08:00 |DEBUG| device.go:405 |Device '192.168.8.155:43444' connected
+2023-08-08T20:46:42+08:00 |INFO| broker.go:94 |Device 'XR20221101204400' registered, proto 3
+2023-08-08T20:48:55+08:00 |ERROR| device.go:335 |Inactive device in long time: XR20221101204400
+2023-08-08T20:48:55+08:00 |2023-08-08T20:48:56+08:00 |ERROR| 2023-08-08T20:48:56+08:00 |ERROR| DEBUG| device.go:324 |device.go:405 |write tcp 192.168.8.160:5912->192.168.8.155:43444: write: broken pipeDevice '192.168.8.155:53176' connecteddevice.go:206 |
+
+read tcp 192.168.8.160:5912->192.168.8.155:43444: read: connection reset by peer
+2023-08-08T20:48:56+08:00 |2023-08-08T20:48:56+08:00 |DEBUG| DEBUG| device.go:140 |device.go:405 |Device '192.168.8.155:51998' connectedDevice '192.168.8.155:43444' disconnected
+
+2023-08-08T20:48:56+08:00 |DEBUG| device.go:405 |Device '192.168.8.155:34154' connected
+2023-08-08T20:48:56+08:00 |INFO| broker.go:150 |Device 'XR20221101204400' unregistered
+2023-08-08T20:48:56+08:00 |INFO| broker.go:94 |Device 'XR20221101204400' registered, proto 3
+2023-08-08T20:48:56+08:00 |ERROR| broker.go:77 |Device ID conflicting: XR20221101204400
+2023-08-08T20:48:56+08:00 |ERROR| broker.go:77 |Device ID conflicting: XR20221101204400
+2023-08-08T20:48:56+08:00 |INFO| broker.go:150 |Device 'XR20221101204400' unregistered
+2023-08-08T20:48:56+08:00 |DEBUG| device.go:140 |Device '192.168.8.155:53176' disconnected
+2023-08-08T20:48:56+08:00 |INFO| broker.go:150 |Device 'XR20221101204400' unregistered
+2023-08-08T20:48:56+08:00 |DEBUG| device.go:140 |Device '192.168.8.155:51998' disconnected
+2023-08-08T20:48:56+08:00 |INFO| broker.go:150 |Device 'XR20221101204400' unregistered
+2023-08-08T20:48:56+08:00 |DEBUG| device.go:140 |Device '192.168.8.155:34154' disconnected
+2023-08-08T20:49:01+08:00 |DEBUG| device.go:405 |Device '192.168.8.155:35680' connected
+2023-08-08T20:49:01+08:00 |INFO| broker.go:94 |Device 'XR20221101204400' registered, proto 3
+2023-08-08T12:57:39Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-08T12:57:39Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-08T12:57:39Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-08T12:57:39Z |INFO| main.go:82 |cfg db:mysql://root:password@tcp(192.168.8.160)/rttys
+2023-08-08T12:57:39Z |INFO| main.go:83 |cfg token:
+2023-08-08T12:57:39Z |INFO| main.go:84 |cfg AddrDev::5912
+2023-08-08T12:57:39Z |INFO| main.go:85 |cfg AddrUser::5913
+2023-08-08T12:57:39Z |INFO| device.go:396 |Listen device on: :5912 SSL off
+2023-08-08T12:57:39Z |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-08T12:57:39Z |INFO| http.go:235 |Listen http proxy on: [::]:38597
+2023-08-08T12:57:39Z |INFO| api.go:810 |Listen user on: :5913 SSL off
+2023-08-09T06:05:52Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-09T06:05:52Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-09T06:05:52Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-09T06:05:52Z |INFO| main.go:82 |cfg db:mysql://root:password@tcp(192.168.8.160)/rttys
+2023-08-09T06:05:52Z |INFO| main.go:83 |cfg token:
+2023-08-09T06:05:52Z |INFO| main.go:84 |cfg AddrDev::5912
+2023-08-09T06:05:52Z |INFO| main.go:85 |cfg AddrUser::5913
+2023-08-09T06:05:52Z |INFO| device.go:394 |Listen device on: :5912 SSL off
+2023-08-09T06:05:52Z |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-09T06:05:52Z |INFO| http.go:235 |Listen http proxy on: [::]:34355
+2023-08-09T06:05:57Z |DEBUG| device.go:407 |Device '127.0.0.1:53846' connected
+2023-08-09T06:05:57Z |ERROR| device.go:218 |invalid msg type: 71
+2023-08-09T06:05:57Z |DEBUG| device.go:140 |Device '127.0.0.1:53846' disconnected
+2023-08-09T06:05:57Z |DEBUG| device.go:407 |Device '127.0.0.1:53850' connected
+2023-08-09T06:05:57Z |ERROR| device.go:218 |invalid msg type: 71
+2023-08-09T06:05:57Z |DEBUG| device.go:140 |Device '127.0.0.1:53850' disconnected
+2023-08-09T06:05:57Z |DEBUG| device.go:407 |Device '127.0.0.1:53854' connected
+2023-08-09T06:05:57Z |ERROR| device.go:218 |invalid msg type: 71
+2023-08-09T06:05:57Z |DEBUG| device.go:140 |Device '127.0.0.1:53854' disconnected
+2023-08-09T06:05:59Z |DEBUG| device.go:407 |Device '127.0.0.1:53858' connected
+2023-08-09T06:05:59Z |DEBUG| device.go:407 |Device '127.0.0.1:53862' connected
+2023-08-09T06:05:59Z |ERROR| device.go:218 |invalid msg type: 71
+2023-08-09T06:05:59Z |DEBUG| device.go:140 |Device '127.0.0.1:53862' disconnected
+2023-08-09T06:05:59Z |ERROR| device.go:218 |invalid msg type: 71
+2023-08-09T06:05:59Z |DEBUG| device.go:140 |Device '127.0.0.1:53858' disconnected
+2023-08-09T06:05:59Z |DEBUG| device.go:407 |Device '127.0.0.1:53866' connected
+2023-08-09T06:05:59Z |ERROR| device.go:218 |invalid msg type: 71
+2023-08-09T06:05:59Z |DEBUG| device.go:140 |Device '127.0.0.1:53866' disconnected
+2023-08-09T06:06:42Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-09T06:06:42Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-09T06:06:42Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-09T06:06:42Z |INFO| main.go:82 |cfg db:mysql://root:password@tcp(192.168.8.160)/rttys
+2023-08-09T06:06:42Z |INFO| main.go:83 |cfg token:
+2023-08-09T06:06:42Z |INFO| main.go:84 |cfg AddrDev::5912
+2023-08-09T06:06:42Z |INFO| main.go:85 |cfg AddrUser::5913
+2023-08-09T06:06:42Z |INFO| device.go:394 |Listen device on: :5912 SSL off
+2023-08-09T06:06:42Z |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-09T06:06:42Z |INFO| http.go:235 |Listen http proxy on: [::]:32817
+2023-08-09T06:07:57Z |INFO| api.go:812 |Listen user on: :5913 SSL off
+2023-08-09T06:08:33Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-09T06:08:33Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-09T06:08:33Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-09T06:08:33Z |INFO| main.go:82 |cfg db:mysql://root:password@tcp(192.168.11.208)/rttys
+2023-08-09T06:08:33Z |INFO| main.go:83 |cfg token:
+2023-08-09T06:08:33Z |INFO| main.go:84 |cfg AddrDev::5912
+2023-08-09T06:08:33Z |INFO| main.go:85 |cfg AddrUser::5913
+2023-08-09T06:08:33Z |INFO| device.go:394 |Listen device on: :5912 SSL off
+2023-08-09T06:08:33Z |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-09T06:08:33Z |INFO| http.go:235 |Listen http proxy on: [::]:41563
+2023-08-09T06:08:33Z |INFO| api.go:812 |Listen user on: :5913 SSL off
+2023-08-09T06:17:16Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-09T06:17:16Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-09T06:17:16Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-09T06:17:16Z |INFO| main.go:82 |cfg db:mysql://root:password@tcp(192.168.11.208)/rttys
+2023-08-09T06:17:16Z |INFO| main.go:83 |cfg token:
+2023-08-09T06:17:16Z |INFO| main.go:84 |cfg AddrDev::5912
+2023-08-09T06:17:16Z |INFO| main.go:85 |cfg AddrUser::5913
+2023-08-09T06:17:16Z |INFO| device.go:394 |Listen device on: :5912 SSL off
+2023-08-09T06:17:16Z |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-09T06:17:16Z |INFO| http.go:235 |Listen http proxy on: [::]:36637
+2023-08-09T06:17:16Z |INFO| api.go:815 |Listen user on: :5913 SSL off
+2023-08-09T06:18:06Z |ERROR| api.go:437 |sql: Scan error on column index 4, name "company": converting NULL to string is unsupported
+2023-08-09T06:18:09Z |ERROR| api.go:437 |sql: Scan error on column index 4, name "company": converting NULL to string is unsupported
+2023-08-09T06:18:15Z |ERROR| api.go:437 |sql: Scan error on column index 4, name "company": converting NULL to string is unsupported
+2023-08-09T06:18:21Z |ERROR| api.go:437 |sql: Scan error on column index 4, name "company": converting NULL to string is unsupported
+2023-08-09T06:45:52Z |INFO| main.go:61 |Go Version: go1.18.10
+2023-08-09T06:45:52Z |INFO| main.go:62 |Go OS/Arch: linux/arm64
+2023-08-09T06:45:52Z |INFO| main.go:64 |Rttys Version: 4.1.1
+2023-08-09T06:45:52Z |INFO| main.go:82 |cfg db:mysql://root:password@tcp(192.168.11.208)/rttys
+2023-08-09T06:45:52Z |INFO| main.go:83 |cfg token:
+2023-08-09T06:45:52Z |INFO| main.go:84 |cfg AddrDev::5912
+2023-08-09T06:45:52Z |INFO| main.go:85 |cfg AddrUser::5913
+2023-08-09T06:45:52Z |INFO| device.go:394 |Listen device on: :5912 SSL off
+2023-08-09T06:45:52Z |INFO| http.go:225 |Automatically select an available port for http proxy
+2023-08-09T06:45:52Z |INFO| http.go:235 |Listen http proxy on: [::]:36811
+2023-08-09T06:45:52Z |INFO| api.go:815 |Listen user on: :5913 SSL off

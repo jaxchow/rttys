@@ -52,6 +52,7 @@ export default {
               sessionStorage.setItem('rttys-username', res.data.username);
               sessionStorage.setItem('rttys-admin', res.data.admin);
               sessionStorage.setItem('rttys-tenant', res.data.tenant);
+              sessionStorage.setItem('rttys-token', res.data.token);
               this.$router.push('/home');
             }).catch(() => {
               this.$Message.error(this.$t('Signin Fail! username or password wrong.').toString());

@@ -8,7 +8,8 @@ import {
     Progress, Tag, Upload,
     MenuItem, Layout, Header, Sider,
     Content, Footer, Menu,
-    Submenu, Avatar
+    Submenu, Avatar,
+    Row, Col
 } from 'view-design'
 
 if (navigator.language === 'zh-CN')
@@ -33,7 +34,10 @@ Vue.component('Input', Input)
 Vue.component('Button', Button)
 Vue.component('MenuItem', MenuItem)
 Vue.component('Avatar', Avatar)
-// Vue.component('Paragraph', Paragraph)
+// Vue.component('DescriptionList', DescriptionList)
+// Vue.component('GridItem', GridItem)
+Vue.component('Col', Col)
+Vue.component('Row', Row)
 
 Vue.component('Submenu', Submenu)
 Vue.component('Menu', Menu)

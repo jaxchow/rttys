@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Frame from '../views/Frame.vue'
 import Login from '../views/Login.vue'
 import Home from '../views/Home.vue'
+import Device from '../views/Device.vue'
 import Account from '../views/Account.vue'
 import Tenant from '../views/Tenant.vue'
 import Rtty from '../views/Rtty.vue'
@@ -23,6 +24,11 @@ const routes = [
         path: '/home',
         name: 'home',
         component: Home
+      },
+      {
+        path: '/device',
+        name: 'device',
+        component: Device
       },
       {
         path: '/account',

@@ -10,6 +10,7 @@ type SAccount struct {
 	Username    string `json:"username",form:"username"`
 	Password    string `json:"password",form:"password"`
 	Admin       int8   `json:"admin",form:"admin"`
+	Company     string `json:"company",form:"company"`
 	Tenant      string `json:"tenant",form:"tenant"`
 	Token       string `json:"token",form:"token"`
 	Description string `json:"description,form:"description""`

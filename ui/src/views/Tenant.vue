@@ -2,14 +2,14 @@
   <div style="padding:5px;">
     <Button style="margin-right: 4px;" type="primary" shape="circle" icon="ios-refresh" @click="handleRefresh" :disabled="loading">{{ $t('Refresh List') }}</Button>
     <Input style="margin-right: 4px;width:200px" v-model="filterString" search @input="handleSearch" :placeholder="$t('Please enter the filter key...')"/>
-    <Button style="margin-right: 4px;" @click="showCmdForm" type="primary">创建租户</Button>
+    <Button style="margin-right: 4px;" @click="showCmdForm" type="primary">{{ $t('Create') }}</Button>
     <Table :loading="loading" :columns="columnsTenants" :data="filteredUser" style="margin-top: 10px; width: 100%" :no-data-text="$t('No Tenant')" @on-selection-change='handleSelection'>
       <template v-slot:action="{ row }">
         <Button size="small" style="vertical-align: bottom;" @click="editTenant(row)">{{ $t('Edit') }}</Button>
         <Button type="warning" size="small" style="vertical-align: bottom;" @click="deleteTenant(row)">{{ $t('Delete') }}</Button>
       </template>
     </Table>
-    <Modal v-model="cmdModal" title="创建租户" @on-ok="doCmd">
+    <Modal v-model="cmdModal" :title="$t('Create')" @on-ok="doCmd">
         <Form ref="cmdForm" :model="tenantData" :label-width="100" label-position="left">
           <FormItem :label="$t('name')" prop="name">
             <Input v-model="tenantData.name"/>
@@ -134,7 +134,7 @@ export default {
     },
     deleteTenant(row) {
       this.$Modal.confirm({
-        content: '是否确认删除数据',
+        content: this.$t('Are you sure'),
         onCancel: () => {},
         onOk: () => {
           this.axios.delete(`/tenants/${row.name}`, {

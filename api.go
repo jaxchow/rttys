@@ -69,9 +69,9 @@ func httpLogin(cfg *config.Config, creds *credentials) bool {
 	return cnt != 0
 }
 
-func getUserTelnet(cfg *config.Config, creds *credentials) (string, int) {
+func getUserTelnet(cfg *config.Config, creds *credentials) (string, int, string) {
 	if creds.Username == "" || creds.Password == "" {
-		return "", 0
+		return "", 0, ""
 	}
 
 	db, err := instanceDB(cfg.DB)
@@ -83,10 +83,11 @@ func getUserTelnet(cfg *config.Config, creds *credentials) (string, int) {
 
 	cnt := ""
 	admin := 0
+	token := ""
 
-	db.QueryRow("SELECT tenant,admin FROM account WHERE username = ? AND password = ?", creds.Username, creds.Password).Scan(&cnt, &admin)
+	db.QueryRow("SELECT tenant,admin,token FROM account WHERE username = ? AND password = ?", creds.Username, creds.Password).Scan(&cnt, &admin, &token)
 
-	return cnt, admin
+	return cnt, admin, token
 
 }
 
@@ -119,25 +120,29 @@ func httpAuth(cfg *config.Config, c *gin.Context) bool {
 	return true
 }
 
-func isAdminUsername(cfg *config.Config, username string) bool {
+func adminUsername(cfg *config.Config, username string) int {
 	if username == "" {
-		return false
+		return 0
 	}
 
 	db, err := instanceDB(cfg.DB)
 	if err != nil {
 		log.Error().Msg(err.Error())
-		return false
+		return 0
 	}
 	defer db.Close()
 
-	isAdmin := false
+	admin := 0
 
-	if db.QueryRow("SELECT admin FROM account WHERE username = ?", username).Scan(&isAdmin) == sql.ErrNoRows {
-		return false
+	if db.QueryRow("SELECT admin FROM account WHERE username = ?", username).Scan(&admin) == sql.ErrNoRows {
+		return 0
 	}
+	return admin
+}
 
-	return isAdmin
+func isAdminUsername(cfg *config.Config, username string) bool {
+	isAdmin := adminUsername(cfg, username)
+	return isAdmin > 0
 }
 
 func getLoginUsername(c *gin.Context) string {
@@ -378,6 +383,8 @@ func apiStart(br *broker) {
 			ID          string `json:"id"`
 			Connected   uint32 `json:"connected"`
 			Uptime      uint32 `json:"uptime"`
+			Username    string `json:"username"`
+			Company     string `json:"company"`
 			Description string `json:"description"`
 			Bound       bool   `json:"bound"`
 			Online      bool   `json:"online"`
@@ -392,23 +399,23 @@ func apiStart(br *broker) {
 		}
 		defer db.Close()
 
-		sql := "SELECT id, description, username,tenant FROM device where 1=1"
+		sql := "SELECT id, description, username,tenant,company FROM device where 1=1"
 
-		if cfg.LocalAuth || !isLocalRequest(c) {
-			username := getLoginUsername(c)
-			if username == "" {
-				c.Status(http.StatusUnauthorized)
-				return
-			}
-
-			if !isAdminUsername(cfg, username) {
-				sql += fmt.Sprintf(" and username = '%s'", username)
-			} else {
-
-			}
+		// if cfg.LocalAuth || !isLocalRequest(c) {
+		username := getLoginUsername(c)
+		if username == "" {
+			c.Status(http.StatusUnauthorized)
+			return
 		}
+		admin := adminUsername(cfg, username)
+		if admin < 2 {
+			sql += fmt.Sprintf(" and tenant = '%s'", tenant)
+		}
+		if admin == 0 {
+			sql += fmt.Sprintf(" and username = '%s'", username)
+		}
+		// }
 
-		sql += fmt.Sprintf(" and tenant = '%s'", tenant)
 		devs := make([]DeviceInfo, 0)
 
 		rows, err := db.Query(sql)
@@ -423,8 +430,9 @@ func apiStart(br *broker) {
 			desc := ""
 			username := ""
 			tenant := ""
+			company := ""
 
-			err := rows.Scan(&id, &desc, &username, &tenant)
+			err := rows.Scan(&id, &desc, &username, &tenant, &company)
 			if err != nil {
 				log.Error().Msg(err.Error())
 				break
@@ -433,6 +441,8 @@ func apiStart(br *broker) {
 			di := DeviceInfo{
 				ID:          id,
 				Description: desc,
+				Username:    username,
+				Company:     company,
 				Bound:       username != "",
 			}
 
@@ -480,7 +490,7 @@ func apiStart(br *broker) {
 		if httpLogin(cfg, &creds) {
 			sid := utils.GenUniqueID("http")
 			httpSessions.Set(sid, creds.Username, 0)
-			tenant, admin := getUserTelnet(cfg, &creds)
+			tenant, admin, token := getUserTelnet(cfg, &creds)
 			c.SetCookie("sid", sid, 0, "", "", false, true)
 
 			c.JSON(http.StatusOK, gin.H{
@@ -488,6 +498,7 @@ func apiStart(br *broker) {
 				"username": creds.Username,
 				"tenant":   tenant,
 				"admin":    admin,
+				"token":    token,
 			})
 			return
 		}

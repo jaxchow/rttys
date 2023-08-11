@@ -15,5 +15,7 @@ RUN CGO_ENABLED=0 \
     go build -ldflags="-s -w -X $VersionPath.gitCommit=$GitCommit -X $VersionPath.buildTime=$BuildTime"
 
 FROM alpine:latest
+WORKDIR /rttys
 COPY --from=rttys /rttys-build/rttys /usr/bin/rttys
-ENTRYPOINT ["/usr/bin/rttys"]
+COPY --from=rttys /rttys-build/rttys.conf /rttys/rttys.conf
+ENTRYPOINT ["/usr/bin/rttys","run","--conf","/rttys/rttys.conf"]

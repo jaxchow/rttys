@@ -44,4 +44,4 @@ CREATE TABLE `tenant` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
-INSERT INTO rttys.account (username, password, admin, tenant, token, description) VALUES('admin', 'admin', 1, NULL, '11', 'abc');
+INSERT INTO rttys.account (username, password, admin, tenant, token, description) VALUES('admin', 'admin', 2, NULL, 'tokenstring', 'abc');

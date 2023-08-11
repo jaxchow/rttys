@@ -2,7 +2,7 @@
   <div style="padding:5px;">
     <Button style="margin-right: 4px;" type="primary" shape="circle" icon="ios-refresh" @click="handleRefresh" :disabled="loading">{{ $t('Refresh List') }}</Button>
     <Input style="margin-right: 4px;width:200px" v-model="filterString" search @input="handleSearch" :placeholder="$t('Please enter the filter key...')"/>
-    <Button style="margin-right: 4px;" @click="showCmdForm" type="primary">添加用户</Button>
+    <Button style="margin-right: 4px;" @click="showCmdForm" type="primary">{{ $t('Create') }}</Button>
     <Table :loading="loading" :columns="columnsUsers" :data="filteredUser" style="margin-top: 10px; width: 100%" :no-data-text="$t('No acounnt')" @on-selection-change='handleSelection'>
       <template v-slot:admin="{ row }">
         <span v-if="row.admin ==0">普通用户</span>
@@ -14,7 +14,7 @@
         <Button type="warning" size="small" style="vertical-align: bottom;" @click="deleteUsers(row)">{{ $t('Delete') }}</Button>
       </template>
     </Table>
-    <Modal v-model="cmdModal" title="添加用户" @on-ok="doCmd">
+    <Modal v-model="cmdModal" :title="$t('Create')" @on-ok="doCmd">
       <Form ref="cmdForm" :model="cmdData" :label-width="100" label-position="left">
         <FormItem :label="$t('Role')" prop='admin' >
           <Select v-model="cmdData.admin" style="width:200px">
@@ -27,6 +27,9 @@
         </FormItem>
         <FormItem :label="$t('Password')" prop="password">
           <Input v-model="cmdData.password" type="password" password />
+        </FormItem>
+        <FormItem :label="$t('Company')" prop="company">
+          <Input v-model="cmdData.company" />
         </FormItem>
         <FormItem :label="$t('Tenant')" prop="tenant">
           <Input v-model="cmdData.tenant" />
@@ -56,7 +59,8 @@ export default {
         username: '',
         isModify:false,
         description: '',
-        admin:2,
+        company: '',
+        admin:0,
         tenant: sessionStorage.getItem('rttys-tenant')
       },
       columnsUsers: [
@@ -70,18 +74,23 @@ export default {
           width: 60
         },
         {
-          title: this.$t('username'),
+          title: this.$t('Username'),
           key: 'username',
           width: 200
         },
         {
-          title: this.$t('admin'),
+          title: this.$t('Admin'),
           // key: 'admin' ,
           slot: 'admin',
           width: 200
         },
         {
-          title: this.$t('tenant'),
+          title: this.$t('Company'),
+          key: 'company',
+          width: 200
+        },
+        {
+          title: this.$t('Tenant'),
            key: 'tenant',
           width: 200
         },
@@ -142,7 +151,7 @@ export default {
     },
     deleteUsers(row) {
       this.$Modal.confirm({
-        content: '是否确认删除数据',
+         content: this.$t('Are you sure'),
         onCancel: () => {},
         onOk: () => {
           this.axios.delete(`/tenants/users/${row.username}`, {

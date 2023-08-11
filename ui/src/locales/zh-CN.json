@@ -70,5 +70,16 @@
   "Invalid address": "无效的地址",
   "Already copied to clipboard": "已复制到剪切板",
   "Please use shortcut \"Shift+Insert\"": "请使用快捷键 \"Shift+Insert\"",
-  "Your device's rtty does not support https proxy, please upgrade it.": "你的设备的 rtty 不支持 https 代理，请升级"
+  "Your device's rtty does not support https proxy, please upgrade it.": "你的设备的 rtty 不支持 https 代理，请升级",
+  "Are you sure":"是否确认删除",
+  "Company":"公司名称",
+  "Tenant":"租户名称",
+  "Create": "创建",
+  "Admin":"角色名称",
+  "Token":"Token",
+  "Other":"Other",
+  "My Menu":"我的信息",
+  "Device Menu":"设备管理",
+  "Tenant Menu":"租户管理",
+  "Account Menu":"用户管理"
 }

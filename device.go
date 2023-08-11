@@ -154,14 +154,16 @@ func (dev *device) UpdateDb() {
 
 	cnt := 0
 	db.QueryRow("SELECT COUNT(*) FROM device WHERE id = ?", dev.id).Scan(&cnt)
-	if cnt == 0 {
-		tenant := ""
-		db.QueryRow("SELECT tenant FROM  account where id ='?' and token = '?'", dev.id, dev.token).Scan(&tenant)
-		if tenant != "" {
-			_, err = db.Exec("INSERT INTO device values(?,?,?,?,?)", dev.id, dev.desc, time.Now(), "", &tenant)
+	tenant := ""
+	account := ""
+	company := ""
+	db.QueryRow("SELECT tenant,account,company FROM  account where  token = ?", dev.token).Scan(&tenant, &account, &company)
+	if tenant != "" {
+		if cnt == 0 {
+			_, err = db.Exec("INSERT INTO device values(?,?,?,?,?,?)", dev.id, dev.desc, time.Now(), account, tenant, company)
+		} else {
+			_, err = db.Exec("UPDATE device SET description = ?, online = ?, tenant = ?, username = ?, company =? WHERE id = ?", dev.desc, time.Now(), dev.id, tenant, account, company)
 		}
-	} else {
-		_, err = db.Exec("UPDATE device SET description = ?, online = ? WHERE id = ?", dev.desc, time.Now(), dev.id)
 	}
 
 	if err != nil {

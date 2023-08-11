@@ -9,6 +9,7 @@ package main
 
 import (
 	"database/sql"
+	"log"
 	"strings"
 
 	sqladapter "github.com/Blank-Xu/sql-adapter"
@@ -24,13 +25,17 @@ func instanceDB(str string) (*sql.DB, error) {
 	if len(sp) == 2 {
 		return sql.Open(sp[0], sp[1])
 	} else {
-		return sql.Open("mysql", str)
+		return sql.Open("mysql", sp[1])
 	}
 }
 
 func initGORM(str string) (*gorm.DB, error) {
 	sp := strings.Split(str, "://")
-	db, err := gorm.Open(mysql.Open(sp[1]), &gorm.Config{})
+	var dialector gorm.Dialector
+	log.Default().Println("dialector dns", sp[1])
+	dialector = mysql.Open(sp[1])
+
+	db, err := gorm.Open(dialector, &gorm.Config{})
 	if err != nil {
 		return nil, err
 	}

@@ -25,9 +25,10 @@
                     <Layout>
                         <Sider hide-trigger :style="{background: '#fff'}">
                             <Menu theme="light" width="auto" :open-names="['1']">
-                                <MenuItem  name="1-1"><a href='/home'>设备管理</a></MenuItem>
-                                <MenuItem v-if="isadmin==2" name="1-2"><a href='/tenant'>租户管理</a></MenuItem>
-                                <MenuItem v-if="isadmin==1 || isadmin==2" name="1-3"><a href='/account'>用户管理</a></MenuItem>
+                                <MenuItem  name="1-1"><a href='/home'>{{ $t('My Menu') }}</a></MenuItem>
+                                <MenuItem  name="1-2"><a href='/device'>{{ $t('Device Menu') }}</a></MenuItem>
+                                <MenuItem v-if="isadmin==2" name="1-3"><a href='/tenant'>{{ $t('Tenant Menu') }}</a></MenuItem>
+                                <MenuItem v-if="isadmin==1 || isadmin==2" name="1-4"><a href='/account'>{{ $t('Account Menu') }}</a></MenuItem>
                             </Menu>
                         </Sider>
                         <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
@@ -59,9 +60,12 @@
     left: 20px;
 }
 .layout-nav{
-    width: 120px;
+    width: 560px;
     margin: 0 auto;
+    text-align: right;
     margin-right: 20px;
+    color:#fff;
+    font-weight: bold;
 }
 .layout-footer-center{
     text-align: center;
@@ -73,6 +77,7 @@
     data() {
       return {
         username: '',
+        token:'',
         isadmin: 0
       }
     },
@@ -88,7 +93,7 @@
     mounted() {
       this.username = sessionStorage.getItem('rttys-username') || '';
       this.isadmin = sessionStorage.getItem('rttys-admin')
-      console.log(this.isadmin)
+      this.token = sessionStorage.getItem('rttys-token')
       // this.axios.get('/isadmin').then(res => {
       //   this.isadmin = res.data.admin;
       // });
