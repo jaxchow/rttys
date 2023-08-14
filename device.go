@@ -162,7 +162,7 @@ func (dev *device) UpdateDb() {
 		if cnt == 0 {
 			_, err = db.Exec("INSERT INTO device values(?,?,?,?,?,?)", dev.id, dev.desc, time.Now(), account, tenant, company)
 		} else {
-			_, err = db.Exec("UPDATE device SET description = ?, online = ?, tenant = ?, username = ?, company =? WHERE id = ?", dev.desc, time.Now(), dev.id, tenant, account, company)
+			_, err = db.Exec("UPDATE device SET description = ?, online = ?, tenant = ?, username = ?, company =? WHERE id = ?", dev.desc, time.Now(), tenant, account, company, dev.id)
 		}
 	}
 
