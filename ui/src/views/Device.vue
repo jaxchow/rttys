@@ -335,7 +335,7 @@ export default {
       }
 
       this.axios.post('/delete', {
-        devices: offlines.map(s => s.id).pop()
+        devices: offlines.map(s => s.id)
       }).then(() => {
         this.getDevices();
         this.$Message.success(this.$t('Delete success'));

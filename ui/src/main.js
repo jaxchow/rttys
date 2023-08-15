@@ -11,7 +11,7 @@ import './assets/iconfont/iconfont.css'
 Vue.config.productionTip = false
 
 Vue.use(VueClipboard)
-axios.defaults.headers.common['Tenant'] = sessionStorage.getItem('rttys-tenant');
+axios.defaults.headers.common['Tenant'] = encodeURIComponent(sessionStorage.getItem('rttys-tenant'));
 Vue.use(VueAxios, axios);
 
 

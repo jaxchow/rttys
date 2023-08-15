@@ -7,6 +7,7 @@ import (
 	"io/fs"
 	"net"
 	"net/http"
+	"net/url"
 	"os"
 	"strconv"
 	"strings"
@@ -254,7 +255,8 @@ func apiStart(br *broker) {
 	})
 
 	authorized.GET("/tenants/users", func(c *gin.Context) {
-		tenant := c.GetHeader("tenant")
+		tenant, _ := url.QueryUnescape(c.GetHeader("tenant"))
+		// log.Debug().Msg("header:" + tenant)
 		account := accountRepo.Query(account.SPAccount{
 			SAccount: account.SAccount{
 				Tenant: tenant,
@@ -390,7 +392,7 @@ func apiStart(br *broker) {
 			Online      bool   `json:"online"`
 			Proto       uint8  `json:"proto"`
 		}
-		tenant := c.GetHeader("Tenant")
+		tenant, _ := url.QueryUnescape(c.GetHeader("tenant"))
 		db, err := instanceDB(cfg.DB)
 		if err != nil {
 			log.Error().Msg(err.Error())

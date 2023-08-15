@@ -22,8 +22,8 @@
             <Option value=1 key=1>管理员</Option>
           </Select>
         </FormItem>
-        <FormItem :label="$t('Username')" prop="username">
-          <Input v-model="cmdData.username"/>
+        <FormItem :label="$t('Username')" prop="username" >
+          <Input v-model="cmdData.username" placeholder="帐号请使用英文或数字字符"/>
         </FormItem>
         <FormItem :label="$t('Password')" prop="password">
           <Input v-model="cmdData.password" type="password" password />

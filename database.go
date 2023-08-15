@@ -22,11 +22,11 @@ import (
 
 func instanceDB(str string) (*sql.DB, error) {
 	sp := strings.Split(str, "://")
-	if len(sp) == 2 {
-		return sql.Open(sp[0], sp[1])
-	} else {
-		return sql.Open("mysql", sp[1])
-	}
+	// if len(sp) == 2 {
+	// 	return sql.Open(sp[0], sp[1])
+	// } else {
+	return sql.Open("mysql", sp[1])
+	// }
 }
 
 func initGORM(str string) (*gorm.DB, error) {
